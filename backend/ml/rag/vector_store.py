@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 # ── Paths ──────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent.parent.parent          # backend/
-CHROMA_PERSIST_DIR = str(BASE_DIR / "ml" / "rag" / "chroma_db")
+CHROMA_PERSIST_DIR = str(BASE_DIR.parent / "chroma_db_data")
 
 # ── Embedding Model ───────────────────────────────────────
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"      # 384-dim, ~80 MB, CPU-fast

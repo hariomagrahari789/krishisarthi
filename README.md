@@ -85,6 +85,7 @@ python seed_platform.py
 **Run the Server:**
 ```bash
 python manage.py runserver 
+
 # Server runs on http://127.0.0.1:8000
 ```
 

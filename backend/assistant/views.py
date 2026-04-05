@@ -208,7 +208,13 @@ def _get_rag_engine():
 def _preload_rag():
     """Background thread to pre-warm the RAG engine after startup."""
     try:
-        _get_rag_engine()
+        engine = _get_rag_engine()
+        if engine:
+            logger.info("Initializing ChromaDB & pulling sentence-transformer weights...")
+            # Fire an empty search to force Vector Store & Embed_fn load
+            from ml.rag.vector_store import search as vector_search
+            vector_search("warmup query", top_k=1)
+            logger.info("RAG Background Load Complete!")
     except Exception as e:
         logger.warning(f"RAG preload failed (non-fatal): {e}")
 
